@@ -58,6 +58,8 @@ userSchema.pre('save', function(next){
 userSchema.methods.comparePassword = function(plainPassword, cb){
     //plainpassword 1234567, 암호화된 비밀번호
     bcrypt.compare(plainPassword, this.password, function(err, isMatch) {
+
+        
         if(err) return cb(err)
         cb(null, isMatch)
     })

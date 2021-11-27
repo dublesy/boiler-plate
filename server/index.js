@@ -26,6 +26,8 @@ moogoose.connect(config.mongoURI, {
 
 app.get('/', (req, res) => res.send('Hello World 새해 복'))
 
+app.get('/api/hello', (req, res) => res.send('Hello World  React'))
+
 app.post('/api/users/register', (req, res) => {
   // 회원 가입 할때 필요한 정보들을 Client에서 가져오면
   // 그것들을 데이터 베이스에 넣어준다.
@@ -51,6 +53,9 @@ app.post('/api/users/login', (req, res)=>{
 
     // 요청된 이메일이 데이터베이스에 있다면 비밀번호가 맞는 비밀번호인지 확인.
     user.comparePassword(req.body.password, (err, isMatch) =>{
+
+      console.log('password : ', req.body.password);
+
       if(!isMatch)
         return res.json({loginSuccess : false, message : '비밀번호가 틀렸습니다.'})
 
@@ -87,8 +92,8 @@ app.get('/api/users/logout', auth, (req, res) =>{
   User.findOneAndUpdate({_id: req.user._id},
     {token: ""},
     (err, user) =>{
-    if(err) return res.json({sucess:false, err});
-    return res.status(200).send({sucess:true})
+    if(err) return res.json({success:false, err});
+    return res.status(200).send({success:true})
   })
 })
 
