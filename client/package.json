@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "antd": "^4.17.2",
     "axios": "^0.24.0",
+    "colorette": "^2.0.16",
     "http-proxy-middleware": "^2.0.1",
     "react": "^17.0.2",
     "react-dev-utils": "^11.0.4",
